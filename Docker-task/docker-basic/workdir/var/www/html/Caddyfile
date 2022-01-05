@@ -1,0 +1,7 @@
+:8080 {
+	file_server {
+	}
+	log {
+		output stdout
+	}
+}
