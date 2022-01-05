@@ -1,0 +1,11 @@
+11.I used a remote server for all of the deployments.
+2.Install terraform,docker all tools required for this task on the server for smooth deployment.
+3.Statred with the terraform task and create script to deploy EC2 on aws with userdata file which include installation of docker on it and pulling and running of docker container on the Ec2.
+4.Gathered all of the information to deploy Instance on AWS i.e Account sceret,Access keys, zones etc
+5.Created two terraform scripts to deploy required infra.
+6.Created docker file for caddy using given repo it was not working smoothly.
+7.Created another docker file simple file to run caddy server.
+8.Create image from it and run container using that image.
+9.Push image to the Docker-Hub.
+10.Update userdata file in terraform to pull following image on the server.
+11.UPdate all of the task directory and push to the Git repo.

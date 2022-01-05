@@ -1,0 +1,50 @@
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.27"
+    }
+  }
+
+  required_version = ">= 0.14.9"
+}
+
+#provider "aws" {
+#  profile = "default"
+#  region  = "us-east-2"
+#}
+
+resource "aws_instance" "ehsamtest-_server" {
+  ami             = "ami-0fb653ca2d3203ac1"
+  instance_type   = "t2.micro"
+  key_name        = "UB-keypair"
+  user_data       = "${file("userdata.sh")}"
+  #security_groups = ["webserver"]
+
+  tags = {
+    Name = "Ehsam-test"
+  }
+}
+
+resource "aws_security_group" "allow_http" {
+  name        = "allow_http"
+  description = "Allow HTTP inbound connections"
+  
+
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port       = 0
+    to_port         = 0
+    protocol        = "-1"
+    cidr_blocks     = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "Allow HTTP Security Group"
+  }
